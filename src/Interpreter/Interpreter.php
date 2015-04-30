@@ -30,9 +30,11 @@ class Interpreter
         $out = array(
             "function" => 0,
             "type" => $data['type'],
-            "dimensions" => $nDim,
+            "dimension" => $nDim,
             "geometry" => $geometry
         );
+
+        return $out;
     }
 
     public function parseInsert($data)
@@ -46,9 +48,11 @@ class Interpreter
             "function" => 1,
             "type" => $data['type'],
             "value" => $data['value'],
-            "dimensions" => $nDim,
+            "dimension" => $nDim,
             "geometry" => $geometry
         );
+
+        return $out;
     }
 
     public  function parseDimensions($data, &$geometry)
@@ -57,11 +61,10 @@ class Interpreter
 
         $geometry = array();
         foreach($dimensions[0] as $dimension)
-        {
-            preg_match_all(PointRegex, $dimension, $points);
-            $geometry += $points;
+        {preg_match_all(PointRegex, $dimension, $points);
+            $geometry[] = $points[0];
         }
 
-        return count($dimension);
+        return count($geometry);
     }
 }

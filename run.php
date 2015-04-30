@@ -18,7 +18,6 @@
             echo "Syntaxis Error\n";
             continue;
         }
-
         echo $connector->send($ans) . "\n";
     }
 ?>

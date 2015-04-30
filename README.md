@@ -1,3 +1,3 @@
 RTreeClient
 -----------
-RTreeClient is the PHP Client
+RTreeClient is the PHP Clientg
